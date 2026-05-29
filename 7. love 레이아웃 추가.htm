@@ -1,0 +1,2466 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>✪ ω ✪</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <style>
+    @import url('https://cdn.jsdelivr.net/gh/sunghyunzz/eulyoo1945/eulyoo1945.css');
+    @import url('https://cdn.jsdelivr.net/gh/MonadABXY/mona-font/web/mona.css');
+
+    @font-face {
+      font-family: 'Yidstreet';
+      src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2110@1.0/YdestreetL.woff2') format('woff2');
+      font-weight: 300;
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: 'Yidstreet';
+      src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2110@1.0/YdestreetB.woff2') format('woff2');
+      font-weight: 700;
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: 'PyeojinGothic';
+      src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2504-1@1.0/PyeojinGothic-Regular.woff2') format('woff2');
+      font-weight: 400;
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: 'PyeojinGothic';
+      src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2504-1@1.0/PyeojinGothic-Bold.woff2') format('woff2');
+      font-weight: 700;
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: 'HsGlidingSerif';
+      src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2604-1@1.0/HSHwalkongSerif-Regular.woff2') format('woff2');
+      font-weight: normal;
+      font-display: swap;
+    }
+
+
+    @font-face {
+      font-family: 'KerisKedyuche';
+      src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2601-3@1.0/KERISKEDU_R.woff2') format('woff2');
+      font-weight: 400;
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: 'KerisKedyuche';
+      src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2601-3@1.0/KERISKEDU_B.woff2') format('woff2');
+      font-weight: 700;
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: 'ChosunIlboMyungjo';
+      src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/Chosunilbo_myungjo.woff') format('woff');
+      font-weight: normal;
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: 'MunmakchoHaeban';
+      src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2604-1@1.0/MUNMAK_HAEBANCHE.woff2') format('woff2');
+      font-weight: normal;
+      font-display: swap;
+    }
+
+    :root {
+      --bg: #fff7fb;
+      --panel: #ffffff;
+      --ink: #4a3340;
+      --muted: #8b6f7d;
+      --accent: #ff8fc1;
+      --accent-soft: #ffe1ef;
+      --border: #ffd1e5;
+      --shadow: 0 18px 50px rgba(255, 143, 193, 0.22);
+      --radius: 24px;
+      --card-font: 'Pretendard', 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: 'Pretendard', 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at top left, rgba(255, 143, 193, 0.32), transparent 30%),
+        radial-gradient(circle at bottom right, rgba(180, 218, 255, 0.38), transparent 34%),
+        var(--bg);
+    }
+
+    button, input, textarea, select { font: inherit; }
+
+    button {
+      border: 0;
+      cursor: pointer;
+      transition: transform 0.15s ease, box-shadow 0.15s ease, opacity 0.15s ease;
+    }
+
+    button:hover { transform: translateY(-1px); }
+    button:active { transform: translateY(0); opacity: 0.88; }
+
+    .app {
+      width: min(1600px, 100%);
+      margin: 0 auto;
+      padding: 28px;
+      display: grid;
+      grid-template-columns: minmax(390px, 440px) minmax(900px, 1fr);
+      gap: 24px;
+      align-items: start;
+    }
+
+    .toolbar, .preview-wrap {
+      background: rgba(255, 255, 255, 0.72);
+      border: 1px solid rgba(255, 255, 255, 0.9);
+      box-shadow: var(--shadow);
+      border-radius: var(--radius);
+      backdrop-filter: blur(14px);
+    }
+
+    .toolbar {
+      height: calc(100vh - 56px);
+      overflow: auto;
+      padding: 20px;
+    }
+
+    .preview-wrap {
+      min-height: calc(100vh - 56px);
+      padding: 22px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      position: sticky;
+      top: 28px;
+    }
+
+    .top-title { margin-bottom: 18px; }
+    .top-title h1 { margin: 0 0 8px; font-size: 23px; letter-spacing: -0.04em; }
+    .top-title p { margin: 0; color: var(--muted); line-height: 1.55; font-size: 13px; }
+
+    .section {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 15px;
+      margin-bottom: 14px;
+    }
+
+    .section h2 {
+      margin: 0 0 12px;
+      font-size: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; align-items: start; }
+    .form-grid.three, .form-grid.four { grid-template-columns: 1fr 1fr; }
+    .field { display: grid; gap: 7px; margin-bottom: 12px; }
+    .form-grid .field { margin-bottom: 0; }
+    .field.full { grid-column: 1 / -1; }
+    .field:last-child { margin-bottom: 0; }
+
+    label { color: var(--muted); font-size: 12px; font-weight: 700; }
+
+    input[type="text"], input[type="date"], textarea, select {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 10px 12px;
+      color: var(--ink);
+      background: #fffafd;
+      outline: none;
+    }
+
+    textarea { min-height: 72px; resize: vertical; }
+    input[type="color"] { width: 100%; height: 42px; border: 0; border-radius: 14px; background: transparent; padding: 0; }
+    input[type="range"] {
+      width: 100%;
+      height: 32px;
+      appearance: none;
+      -webkit-appearance: none;
+      background: transparent;
+      cursor: pointer;
+      accent-color: var(--accent);
+    }
+
+    input[type="range"]::-webkit-slider-runnable-track {
+      height: 12px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background:
+        linear-gradient(90deg, var(--accent), var(--accent-soft)),
+        #fffafd;
+      box-shadow:
+        inset 0 1px 3px rgba(74, 51, 64, 0.08),
+        0 6px 14px rgba(255, 143, 193, 0.18);
+    }
+
+    input[type="range"]::-webkit-slider-thumb {
+      appearance: none;
+      -webkit-appearance: none;
+      width: 24px;
+      height: 24px;
+      margin-top: -7px;
+      border-radius: 999px;
+      border: 3px solid #fffafd;
+      background: var(--accent);
+      box-shadow:
+        0 5px 14px rgba(74, 51, 64, 0.18),
+        0 0 0 5px var(--accent-soft);
+    }
+
+    input[type="range"]:hover::-webkit-slider-thumb {
+      transform: scale(1.05);
+    }
+
+    input[type="range"]:focus-visible {
+      outline: none;
+    }
+
+    input[type="range"]:focus-visible::-webkit-slider-thumb {
+      box-shadow:
+        0 5px 14px rgba(74, 51, 64, 0.18),
+        0 0 0 6px var(--accent-soft),
+        0 0 0 8px rgba(255, 255, 255, 0.9);
+    }
+
+    input[type="range"]::-moz-range-track {
+      height: 12px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: linear-gradient(90deg, var(--accent), var(--accent-soft));
+      box-shadow:
+        inset 0 1px 3px rgba(74, 51, 64, 0.08),
+        0 6px 14px rgba(255, 143, 193, 0.18);
+    }
+
+    input[type="range"]::-moz-range-thumb {
+      width: 24px;
+      height: 24px;
+      border-radius: 999px;
+      border: 3px solid #fffafd;
+      background: var(--accent);
+      box-shadow:
+        0 5px 14px rgba(74, 51, 64, 0.18),
+        0 0 0 5px var(--accent-soft);
+    }
+    input[type="file"] { display: none; }
+
+    .toolbar, .canvas-area, textarea {
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+
+    .toolbar::-webkit-scrollbar,
+    .canvas-area::-webkit-scrollbar,
+    textarea::-webkit-scrollbar {
+      width: 0;
+      height: 0;
+      display: none;
+    }
+
+    select {
+      appearance: none;
+      -webkit-appearance: none;
+      padding-right: 44px !important;
+      background-color: #fffafd !important;
+      background-image:
+        linear-gradient(45deg, transparent 50%, var(--accent) 50%),
+        linear-gradient(135deg, var(--accent) 50%, transparent 50%),
+        linear-gradient(to right, var(--accent-soft), var(--accent-soft));
+      background-position:
+        calc(100% - 23px) 50%,
+        calc(100% - 16px) 50%,
+        calc(100% - 38px) 50%;
+      background-size: 7px 7px, 7px 7px, 1px 58%;
+      background-repeat: no-repeat;
+      cursor: pointer;
+    }
+
+
+
+    /* 모바일에서 날짜 입력칸이 들뜨거나 잘리는 문제 보정 */
+    input[type="date"] {
+      min-width: 0;
+      min-height: 42px;
+      line-height: 1.2;
+      text-align: left;
+    }
+
+    input[type="date"]::-webkit-date-and-time-value {
+      min-height: 20px;
+      text-align: left;
+    }
+
+    input[type="date"]::-webkit-datetime-edit {
+      display: flex;
+      align-items: center;
+      min-height: 20px;
+      padding: 0;
+    }
+
+    input[type="date"]::-webkit-calendar-picker-indicator {
+      margin: 0;
+      padding: 0;
+    }
+
+    .media-control {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .media-remove {
+      min-width: 68px;
+      min-height: 40px;
+      padding-inline: 13px;
+    }
+
+    input[type="color"] {
+      cursor: pointer;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: #fffafd;
+      padding: 4px;
+      box-shadow: inset 0 0 0 4px rgba(255,255,255,.65);
+    }
+
+    input[type="color"]::-webkit-color-swatch-wrapper { padding: 0; }
+    input[type="color"]::-webkit-color-swatch {
+      border: 0;
+      border-radius: 999px;
+    }
+    input[type="color"]::-moz-color-swatch {
+      border: 0;
+      border-radius: 999px;
+    }
+
+    .btn, .file-btn, .mini-chip, .selected-chip {
+      border-radius: 999px;
+      padding: 10px 14px;
+      color: white;
+      background: var(--accent);
+      font-weight: 800;
+      box-shadow: 0 8px 18px rgba(255, 143, 193, 0.35);
+      white-space: nowrap;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      min-height: 40px;
+    }
+
+    .file-btn { cursor: pointer; width: 100%; color: var(--ink); background: var(--accent-soft); box-shadow: none; border: 1px solid var(--border); }
+    .btn.secondary, .mini-chip, .selected-chip { color: var(--ink); background: var(--accent-soft); box-shadow: none; border: 1px solid var(--border); }
+    .mini-chip { min-height: 34px; padding: 7px 11px; font-size: 12px; }
+    .mini-chip.active { color: white; background: var(--accent); border-color: var(--accent); }
+    .selected-chip { min-height: 32px; padding: 6px 10px; font-size: 12px; }
+    .selected-chip button { width: 18px; height: 18px; border-radius: 50%; color: white; background: rgba(74, 51, 64, 0.45); font-size: 12px; line-height: 1; padding: 0; }
+    .btn.danger { background: #ff6f86; box-shadow: none; }
+    .btn.full { width: 100%; }
+    .backup-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 8px; }
+    .backup-actions .btn { width: 100%; }
+
+    .chip-picker { display: flex; flex-wrap: wrap; gap: 7px; margin: 8px 0 10px; }
+    .selected-chip-list { display: flex; flex-wrap: wrap; gap: 7px; min-height: 34px; padding: 8px; border: 1px dashed var(--border); border-radius: 14px; background: #fffafd; }
+    .custom-chip-row { display: grid; grid-template-columns: 1fr auto; gap: 8px; margin-top: 8px; }
+
+    .pair-editor, .sticker-editor, .control-card, .chip-box { border: 1px dashed var(--border); border-radius: 18px; padding: 12px; margin-bottom: 10px; background: #fffafd; }
+    .pair-editor:last-child, .sticker-editor:last-child, .control-card:last-child, .chip-box:last-child { margin-bottom: 0; }
+    .pair-editor-top { display: flex; justify-content: space-between; align-items: center; gap: 8px; margin-bottom: 10px; flex-wrap: wrap; }
+    .pair-move-actions { display: flex; gap: 6px; flex-wrap: wrap; }
+    .pair-move-actions .btn { min-height: 32px; padding: 6px 10px; font-size: 12px; }
+    .section-title-actions { display: inline-flex; gap: 6px; align-items: center; flex-wrap: wrap; }
+    .section-title-actions .btn, .editor-toggle-btn, #undoButton { min-height: 32px; padding: 6px 10px; font-size: 12px; box-shadow: none; }
+    .editor-panel { display: block; }
+    .editor-section.is-editor-collapsed .editor-panel { display: none; }
+    .editor-section.is-editor-collapsed .editor-toggle-btn::after { content: ' 열기'; }
+    .editor-section:not(.is-editor-collapsed) .editor-toggle-btn::after { content: ' 접기'; }
+    .btn:disabled { opacity: .45; cursor: not-allowed; transform: none !important; }
+    .tiny { font-size: 11px; color: var(--muted); line-height: 1.5; }
+
+    .preview-actions { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; }
+    .canvas-area {
+      flex: 1;
+      display: grid;
+      align-items: start;
+      justify-items: center;
+      overflow: auto;
+      padding: 12px;
+      border-radius: 20px;
+      background:
+        linear-gradient(45deg, rgba(255,255,255,.55) 25%, transparent 25%),
+        linear-gradient(-45deg, rgba(255,255,255,.55) 25%, transparent 25%),
+        linear-gradient(45deg, transparent 75%, rgba(255,255,255,.55) 75%),
+        linear-gradient(-45deg, transparent 75%, rgba(255,255,255,.55) 75%);
+      background-size: 26px 26px;
+      background-position: 0 0, 0 13px, 13px -13px, -13px 0px;
+    }
+
+    #profileCard {
+      position: relative;
+      width: 900px;
+      min-height: 1100px;
+      overflow: hidden;
+      background: var(--card-bg, #fff7fb);
+      border-radius: var(--card-radius, 34px);
+      color: var(--card-ink, #4a3340);
+      box-shadow: 0 28px 70px rgba(69, 35, 52, 0.22);
+      transform-origin: top center;
+      font-family: var(--card-font);
+    }
+
+    .decor-bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      opacity: 1;
+      background:
+        linear-gradient(135deg, var(--card-bg-soft, rgba(255,255,255,.72)), rgba(255,255,255,.22)),
+        radial-gradient(circle at 82% 88%, var(--card-accent-soft, rgba(255,143,193,.14)), transparent 24%);
+   }
+
+
+
+    .decor-bg svg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    .sticker-action-row {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    .sticker-action-row .btn,
+    .sticker-order-btn {
+      min-height: 32px;
+      padding: 6px 10px;
+      font-size: 12px;
+    }
+
+    .visibility-list {
+      display: grid;
+      gap: 8px;
+    }
+
+    .visibility-toggle {
+      width: 100%;
+      min-height: 38px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: var(--accent-soft);
+      color: var(--ink);
+      box-shadow: none;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      font-size: 12px;
+      font-weight: 900;
+    }
+
+    .visibility-toggle::after {
+      content: '보임';
+      padding: 4px 9px;
+      border-radius: 999px;
+      background: var(--accent);
+      color: white;
+      font-size: 11px;
+    }
+
+    .visibility-toggle.is-hidden {
+      background: #fffafd;
+      color: var(--muted);
+      border-style: dashed;
+    }
+
+    .visibility-toggle.is-hidden::after {
+      content: '숨김';
+      background: rgba(74, 51, 64, 0.35);
+    }
+
+    .chip-section.is-hidden,
+    .info-card.is-hidden,
+    .card-header.is-hidden {
+      display: none !important;
+    }
+
+    #profileCard.exporting .decor-bg {
+      display: block !important;
+      visibility: visible !important;
+      opacity: 1 !important;
+    }
+
+    #profileCard.exporting,
+    #profileCard.exporting * {
+      backdrop-filter: none !important;
+   }
+
+    #profileCard.exporting {
+      box-shadow: 0 28px 70px rgba(69, 35, 52, 0.22) !important;
+   }
+
+    #profileCard.exporting .info-card,
+    #profileCard.exporting .title-box {
+      box-shadow: 0 10px 26px rgba(74,51,64,.07) !important;
+      background: rgba(255,255,255,.88) !important;
+   }
+
+    #profileCard.exporting .sticker {
+      filter: none !important;
+    }
+
+    #profileCard.exporting .sticker-frame,
+    #profileCard.exporting .sticker.layout-polaroid {
+      box-shadow: none !important;
+    }
+    .pattern-dots .decor-bg {
+      background:
+        radial-gradient(var(--card-accent-faint, rgba(255,143,193,.14)) 1.5px, transparent 1.5px),
+        radial-gradient(circle at 82% 88%, var(--card-accent-soft, rgba(255,143,193,.14)), transparent 24%),
+        var(--card-bg-pattern, transparent);
+      background-size: 22px 22px, auto, auto;
+      opacity: 1;
+   }
+    .pattern-grid .decor-bg {
+      background:
+      linear-gradient(var(--card-accent-line, rgba(255,143,193,.12)) 1px, transparent 1px),
+      linear-gradient(90deg, var(--card-accent-line, rgba(255,143,193,.12)) 1px, transparent 1px),
+      radial-gradient(circle at 82% 88%, var(--card-accent-soft, rgba(255,143,193,.14)), transparent 24%),
+      var(--card-bg-pattern, transparent);
+      background-size: 34px 34px, 34px 34px, auto, auto;
+      opacity: 1;
+   }
+    .pattern-ribbon .decor-bg::before, .pattern-ribbon .decor-bg::after { content: none; }
+
+    .card-inner { position: relative; z-index: 2; padding: 44px 44px 36px; }
+    .card-header { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 26px; align-items: stretch; margin-bottom: 26px; }
+    .title-box { padding: 30px; border-radius: 30px; background: rgba(255,255,255,.72); border: 2px solid rgba(255,255,255,.9); box-shadow: 0 12px 30px rgba(74,51,64,.08); display: grid; grid-template-columns: 112px 1fr; gap: 18px; align-items: center; }
+    .profile-photo { width: 112px; height: 112px; border-radius: 28px; overflow: hidden; background-color: var(--card-accent-soft, #ffe1ef); background-size: cover; background-position: center; background-repeat: no-repeat; border: 2px dashed var(--card-accent); display: grid; place-items: center; color: var(--card-muted, #8b6f7d); font-size: 12px; text-align: center; flex-shrink: 0; }
+    .profile-photo.has-image { border-style: solid; background-image: none; }
+    .profile-photo.has-image span { display: none; }
+    .profile-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .title-content { min-width: 0; }
+    .title-box .eyebrow { display: inline-flex; padding: 8px 14px; border-radius: 999px; background: var(--card-accent, #ff8fc1); color: white; font-weight: 900; font-size: 13px; margin-bottom: 16px; }
+    .title-box h3 { margin: 0 0 10px; font-size: 42px; letter-spacing: -0.06em; line-height: 1.05; word-break: break-word; }
+    .title-box p { margin: 0; color: var(--card-muted, #8b6f7d); line-height: 1.6; white-space: pre-wrap; }
+
+    .hero-photo { min-height: 280px; border-radius: 30px; background: rgba(255,255,255,.58); border: 2px dashed var(--card-accent); overflow: hidden; display: grid; place-items: center; color: var(--card-muted, #8b6f7d); text-align: center; padding: 18px; position: relative; cursor: grab; }
+    .hero-photo:active { cursor: grabbing; }
+    .hero-photo.has-image { border-style: solid; }
+    .hero-photo.has-image > span { display: none; }
+    .hero-bg { position: absolute; inset: 18px; background-image: var(--hero-image); background-size: contain; background-position: center; background-repeat: no-repeat; transform: translate(var(--hero-x, 0px), var(--hero-y, 0px)) scale(var(--hero-scale, 1)); transform-origin: center; pointer-events: none; user-select: none; }
+
+    .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-bottom: 22px; }
+    .info-card { background: rgba(255,255,255,.76); border: 2px solid rgba(255,255,255,.9); border-radius: 26px; padding: 22px; box-shadow: 0 10px 26px rgba(74,51,64,.07); }
+    .info-card.wide { grid-column: 1 / -1; }
+    .info-card h4 { margin: 0 0 12px; font-size: 18px; display: flex; align-items: center; gap: 8px; }
+    .info-card h4::before { content: ''; width: 10px; height: 10px; border-radius: 50%; background: var(--card-accent, #ff8fc1); flex-shrink: 0; }
+    .info-card p { margin: 0; white-space: pre-wrap; line-height: 1.65; color: var(--card-muted, #8b6f7d); font-size: 15px; }
+    .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+    .chip { padding: 8px 12px; border-radius: 999px; background: var(--card-accent-soft, #ffe1ef); color: var(--card-ink, #4a3340); font-weight: 800; font-size: 13px; }
+    .chip-subtitle { display: block; margin: 12px 0 7px; color: var(--card-muted, #8b6f7d); font-size: 12px; font-weight: 900; }
+    .chip-subtitle:first-of-type { margin-top: 0; }
+    .merged-chip-card .chips { margin-bottom: 8px; }
+
+    .pair-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+    .pair-list.layout-cover { grid-template-columns: 1fr; }
+    .pair-card { display: grid; grid-template-columns: 112px 1fr; gap: 14px; background: rgba(255,255,255,.7); border: 1px solid rgba(255,255,255,.9); border-radius: 22px; padding: 12px; align-items: center; }
+    .pair-img { width: 112px; height: 112px; border-radius: 18px; background: var(--card-accent-soft, #ffe1ef); overflow: hidden; display: grid; place-items: center; color: var(--card-muted, #8b6f7d); font-size: 12px; text-align: center; position: relative; flex-shrink: 0; }
+    .fit-bg { position: absolute; inset: 0; background-size: cover; background-position: center; background-repeat: no-repeat; }
+    .pair-meta strong { display: block; font-size: 18px; margin-bottom: 6px; word-break: break-word; }
+    .pair-meta span { display: block; color: var(--card-muted, #8b6f7d); font-size: 13px; line-height: 1.5; word-break: break-word; }
+    .pair-card.cover { grid-column: 1 / -1; position: relative; min-height: 190px; overflow: hidden; display: block; padding: 0; border: 0; background: var(--card-accent-soft, #ffe1ef); }
+    .pair-card.cover .pair-cover-bg { position: absolute; inset: 0; background-size: cover; background-position: center; }
+    .pair-card.cover .pair-cover-bg.empty { display: grid; place-items: center; color: var(--card-muted, #8b6f7d); background: var(--card-accent-soft, #ffe1ef); font-size: 13px; }
+    .pair-card.cover .pair-cover-bg::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(74,51,64,.72), rgba(74,51,64,.16), rgba(255,255,255,.08)); }
+    .pair-card.cover .pair-meta { position: absolute; z-index: 2; left: 18px; right: 18px; bottom: 16px; color: white; text-shadow: 0 2px 10px rgba(0,0,0,.35); }
+    .pair-card.cover .pair-meta span { color: rgba(255,255,255,.9); }
+
+    .pair-card.text-only { display: block; padding: 14px 18px; background: rgba(255,255,255,.7); border: 1px solid rgba(255,255,255,.9); border-radius: 22px; }
+    .pair-card.text-only .pair-meta strong { font-size: 16px; margin-bottom: 4px; }
+    .pair-card.text-only .pair-meta span { font-size: 13px; }
+
+    .credit { position: absolute; right: 28px; bottom: 18px; z-index: 9999; padding: 5px 10px; border-radius: 999px; background: rgba(255,255,255,.78); color: var(--card-muted, #8b6f7d); font-size: 13px; font-weight: 900; opacity: .95; pointer-events: none; box-shadow: 0 6px 16px rgba(74,51,64,.08); }
+
+    .sticker { position: absolute; z-index: 4; left: 40px; top: 40px; width: 160px; transform: rotate(0deg); transform-origin: center; cursor: grab; user-select: none; touch-action: none; filter: none; transition: width 0.08s linear, transform 0.08s linear, opacity 0.08s linear; will-change: width, transform, opacity; --sticker-outline-color: var(--card-accent, #ff8fc1); --sticker-outline-width: 1px; }
+    .sticker:active { cursor: grabbing; }
+    .sticker-frame { width: 100%; height: var(--sticker-frame-height, 160px); overflow: hidden; position: relative; transition: height 0.08s linear; box-shadow: none; border: var(--sticker-outline-width) solid var(--sticker-outline-color); }
+    .sticker-image { position: absolute; inset: 0; background-size: cover; background-position: center; background-repeat: no-repeat; pointer-events: none; }
+    .sticker.selected { outline: 2px dashed var(--card-accent, #ff8fc1); outline-offset: 4px; border-radius: 18px; }
+    .sticker.outline-hidden .sticker-frame { border-color: transparent; }
+    .sticker.layout-rounded .sticker-frame { border-radius: 18px; }
+    .sticker.layout-circle .sticker-frame { border-radius: 999px; }
+    .sticker.layout-square .sticker-frame { border-radius: 4px; }
+    .sticker.layout-soft .sticker-frame { border-radius: 32px; }
+    .sticker.layout-polaroid { background: white; padding: 10px 10px 28px; border-radius: 10px; box-shadow: none; border: var(--sticker-outline-width) solid var(--sticker-outline-color); }
+    .sticker.layout-polaroid.outline-hidden { border-color: transparent; }
+    .sticker.layout-polaroid .sticker-frame { border-radius: 5px; border: 0; }
+    .sticker.layout-tape::before { content: ''; position: absolute; z-index: 2; left: 50%; top: -14px; width: 74px; height: 24px; transform: translateX(-50%) rotate(-8deg); border-radius: 6px; background: rgba(255,255,255,.65); border: var(--sticker-outline-width) solid var(--sticker-outline-color); box-shadow: none; }
+    .sticker.layout-tape.outline-hidden::before { border-color: transparent; }
+    .sticker.layout-tape .sticker-frame { border-radius: 12px; }
+    .outline-sync-actions { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 7px; }
+    .outline-sync-actions .btn { min-height: 32px; padding: 6px 10px; font-size: 12px; }
+
+    .empty-text { color: var(--card-muted, #8b6f7d); font-size: 14px; line-height: 1.55; }
+
+    .app {
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .toolbar {
+      height: calc(100vh - 56px);
+      overflow-y: auto;
+    }
+
+    .preview-wrap {
+      height: calc(100vh - 56px);
+      min-height: 0;
+      overflow: hidden;
+    }
+
+    .canvas-area {
+      flex: 1;
+      min-height: 0;
+      overflow: auto;
+    }
+
+
+
+    .sheet-handle-wrap {
+      display: none;
+    }
+
+    .sheet-grip {
+      width: 54px;
+      height: 5px;
+      border-radius: 999px;
+      background: rgba(74, 51, 64, 0.22);
+      margin: 0 auto 8px;
+    }
+
+    .sheet-title-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .sheet-title-row strong {
+      font-size: 14px;
+      letter-spacing: -0.03em;
+    }
+
+    .sheet-actions {
+      display: flex;
+      gap: 6px;
+    }
+
+    .sheet-actions .btn {
+      min-height: 30px;
+      padding: 5px 10px;
+      font-size: 11px;
+    }
+
+    @media (max-width: 1480px) {
+      body {
+        min-height: 100vh;
+        overflow-y: auto;
+      }
+
+      .app {
+        grid-template-columns: 1fr;
+        height: auto;
+        min-height: 100vh;
+        overflow: visible;
+      }
+
+      .preview-wrap {
+        order: 1;
+        position: static;
+        height: auto;
+        min-height: 0;
+        overflow: visible;
+      }
+
+      .toolbar {
+        order: 2;
+        height: auto;
+        max-height: none;
+        overflow: visible;
+      }
+
+      .canvas-area {
+        height: min(78vh, 860px);
+        min-height: 560px;
+        overflow: auto;
+      }
+
+      #profileCard { transform: scale(.82); }
+    }
+
+    @media (max-width: 760px) {
+      body {
+        min-height: 100dvh;
+        overflow: hidden;
+      }
+
+      .app {
+        width: 100%;
+        height: 100dvh;
+        min-height: 100dvh;
+        padding: 10px;
+        display: block;
+        overflow: hidden;
+      }
+
+      .preview-wrap {
+        position: relative;
+        height: calc(100dvh - 20px);
+        min-height: 0;
+        padding: 12px;
+        gap: 10px;
+        overflow: hidden;
+        border-radius: 20px;
+      }
+
+      .canvas-area {
+        height: auto;
+        min-height: 0;
+        flex: 1;
+        padding: 8px;
+        align-items: start;
+        overflow: auto;
+        padding-bottom: 94px;
+      }
+
+      #profileCard { transform: scale(.55); }
+
+      .toolbar {
+        position: fixed;
+        left: 10px;
+        right: 10px;
+        bottom: 0;
+        z-index: 10000;
+        height: min(78dvh, 720px);
+        max-height: none;
+        padding: 12px 14px 18px;
+        border-radius: 24px 24px 0 0;
+        overflow-y: auto;
+        overscroll-behavior: contain;
+        transform: translateY(calc(100% - 82px));
+        transition: transform 0.24s ease;
+        box-shadow: 0 -18px 45px rgba(74, 51, 64, 0.18);
+        touch-action: pan-y;
+      }
+
+      body.sheet-open .toolbar,
+      body.sheet-dragging .toolbar {
+        transform: translateY(var(--sheet-translate, 0px));
+      }
+
+      body.sheet-collapsed .toolbar {
+        transform: translateY(calc(100% - 82px));
+      }
+
+      body.sheet-dragging .toolbar {
+        transition: none;
+      }
+
+      .sheet-handle-wrap {
+        display: block;
+        position: sticky;
+        top: -12px;
+        z-index: 5;
+        margin: -12px -14px 14px;
+        padding: 10px 14px 12px;
+        border-radius: 24px 24px 18px 18px;
+        background: rgba(255, 255, 255, 0.92);
+        border-bottom: 1px solid var(--border);
+        backdrop-filter: blur(14px);
+        cursor: grab;
+        touch-action: none;
+      }
+
+      .sheet-handle-wrap:active {
+        cursor: grabbing;
+      }
+
+      body.sheet-collapsed .toolbar > :not(.sheet-handle-wrap) {
+        pointer-events: none;
+      }
+
+      .top-title {
+        margin-bottom: 12px;
+      }
+
+      .top-title h1 {
+        font-size: 20px;
+      }
+
+      .toolbar,
+      .preview-wrap {
+        border-radius: 20px;
+      }
+
+      .form-grid,
+      .form-grid.three,
+      .form-grid.four,
+      .backup-actions,
+      .custom-chip-row,
+      .media-control {
+        grid-template-columns: 1fr;
+      }
+
+      .pair-editor .form-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .pair-editor .field,
+      .pair-editor input[type="date"] {
+        min-width: 0;
+        max-width: 100%;
+      }
+
+      .pair-editor input[type="date"] {
+        width: 100%;
+        height: 42px;
+        padding: 10px 12px;
+        font-size: 16px;
+        line-height: 20px;
+        -webkit-appearance: none;
+        appearance: none;
+      }
+
+
+      .preview-actions {
+        gap: 8px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .app {
+        padding: 8px;
+      }
+
+      .preview-wrap {
+        height: calc(100dvh - 16px);
+        padding: 10px;
+      }
+
+      .toolbar {
+        left: 8px;
+        right: 8px;
+        height: min(82dvh, 720px);
+        transform: translateY(calc(100% - 78px));
+      }
+
+      body.sheet-collapsed .toolbar {
+        transform: translateY(calc(100% - 78px));
+      }
+
+      .sheet-handle-wrap {
+        margin: -12px -14px 12px;
+      }
+
+      .canvas-area {
+        padding-bottom: 88px;
+      }
+
+      #profileCard { transform: scale(.45); }
+    }
+    
+  </style>
+</head>
+<body>
+  <main class="app">
+    <aside class="toolbar" id="editSheet">
+      <div class="sheet-handle-wrap" id="sheetHandle" role="button" tabindex="0" aria-expanded="false">
+        <div class="sheet-grip"></div>
+        <div class="sheet-title-row">
+          <strong>수정창</strong>
+          <div class="sheet-actions">
+            <button class="btn secondary" id="undoButton" type="button" disabled>실행취소</button>
+            <button class="btn secondary" id="sheetCollapse" type="button">내리기</button>
+            <button class="btn secondary" id="sheetExpand" type="button">올리기</button>
+          </div>
+        </div>
+      </div>
+      <div class="top-title">
+        <h1>자기소개 표 만들기 ✪ ω ✪</h1>
+      </div>
+
+      <section class="section">
+        <h2>기본 정보</h2>
+        <div class="form-grid">
+          <div class="field">
+            <label for="eyebrowText">아이디</label>
+            <input id="eyebrowText" type="text" value="" />
+          </div>
+          <div class="field">
+            <label for="displayName">닉네임</label>
+            <input id="displayName" type="text" value="" />
+          </div>
+          <div class="field">
+            <label>프로필 사진</label>
+            <div class="media-control">
+              <label class="file-btn" for="profilePhoto">사진 추가</label>
+              <button class="btn secondary media-remove" id="removeProfilePhoto" type="button" disabled>삭제</button>
+            </div>
+            <input id="profilePhoto" type="file" accept="image/*" />
+          </div>
+          <div class="field">
+            <label>대표 사진</label>
+            <div class="media-control">
+              <label class="file-btn" for="mainPhoto">사진 추가</label>
+              <button class="btn secondary media-remove" id="removeMainPhoto" type="button" disabled>삭제</button>
+            </div>
+            <input id="mainPhoto" type="file" accept="image/*" />
+          </div>
+          <div class="field full">
+            <label for="intro">자기소개</label>
+            <textarea id="intro"></textarea>
+          </div>
+        </div>
+      </section>
+
+<section class="section">
+        <h2>대표 사진 위치 조절</h2>
+        <div class="control-card">
+          <div class="tiny" style="margin-bottom: 10px;">드래그로 위치를 옮길 수 있습니다~!! ✪ ω ✪</div>
+          <div class="form-grid">
+            <div class="field">
+              <label for="heroX">가로 위치</label>
+              <input id="heroX" type="range" min="-180" max="180" value="0" />
+            </div>
+            <div class="field">
+              <label for="heroY">세로 위치</label>
+              <input id="heroY" type="range" min="-180" max="180" value="0" />
+            </div>
+            <div class="field full">
+              <label for="heroScale">크기</label>
+              <input id="heroScale" type="range" min="100" max="220" value="100" />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="chip-box" data-chip-group="platforms">
+          <label>플랫폼</label>
+          <div class="chip-picker" id="platformOptions"></div>
+          <div class="selected-chip-list" id="platformSelected"></div>
+          <div class="custom-chip-row">
+            <input id="customPlatform" type="text" placeholder="" />
+            <button class="btn secondary" type="button" data-add-custom="platforms">추가</button>
+          </div>
+        </div>
+        <div class="chip-box" data-chip-group="tendency">
+          <label>성향</label>
+          <div class="chip-picker" id="tendencyOptions"></div>
+          <div class="selected-chip-list" id="tendencySelected"></div>
+          <div class="custom-chip-row">
+            <input id="customTendency" type="text" placeholder="" />
+            <button class="btn secondary" type="button" data-add-custom="tendency">추가</button>
+          </div>
+        </div>
+        <div class="chip-box" data-chip-group="activity">
+          <label>활동 성향</label>
+          <div class="chip-picker" id="activityOptions"></div>
+          <div class="selected-chip-list" id="activitySelected"></div>
+          <div class="custom-chip-row">
+            <input id="customActivity" type="text" placeholder="" />
+            <button class="btn secondary" type="button" data-add-custom="activity">추가</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>INFOR</h2>
+        <div class="field">
+          <textarea id="warnings"></textarea>
+        </div>
+      </section>
+
+      <section class="section editor-section" id="loveEditorSection">
+        <h2>
+          <span>LOVE</span>
+          <span class="section-title-actions">
+            <button class="btn secondary editor-toggle-btn" id="toggleLoveEditors" type="button" aria-expanded="true">편집</button>
+            <button class="btn secondary" id="addPair" type="button">추가</button>
+          </span>
+        </h2>
+        <div class="editor-panel" id="pairEditors"></div>
+      </section>
+      
+      <section class="section">
+        <h2>카드 표시</h2>
+        <div class="visibility-list">
+          <button class="visibility-toggle" type="button" data-toggle-card="basic" id="toggleBasic">기본 정보</button>
+          <button class="visibility-toggle" type="button" data-toggle-card="platforms" id="togglePlatforms">플랫폼</button>
+          <button class="visibility-toggle" type="button" data-toggle-card="tendency" id="toggleTendency">성향</button>
+          <button class="visibility-toggle" type="button" data-toggle-card="activity" id="toggleActivity">활동성향</button>
+          <button class="visibility-toggle" type="button" data-toggle-card="info" id="toggleInfo">INFOR</button>
+          <button class="visibility-toggle" type="button" data-toggle-card="love" id="toggleLove">LOVE</button>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>꾸미기</h2>
+        <div class="form-grid">
+          <div class="field">
+            <label for="bgColor">배경색</label>
+            <input id="bgColor" type="color" value="#fff7fb" />
+          </div>
+          <div class="field">
+            <label for="accentColor">포인트색</label>
+            <input id="accentColor" type="color" value="#ff8fc1" />
+          </div>
+          <div class="field">
+            <label for="textColor">글자색</label>
+            <input id="textColor" type="color" value="#4a3340" />
+          </div>
+          <div class="field">
+            <label for="cardRadius">둥근 정도</label>
+            <input id="cardRadius" type="range" min="0" max="60" value="34" />
+          </div>
+          <div class="field">
+            <label for="pattern">배경</label>
+            <select id="pattern">
+              <option value="pattern-soft">그라데이션</option>
+              <option value="pattern-dots">도트</option>
+              <option value="pattern-grid">격자</option>
+              <option value="pattern-ribbon">리본</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="fontFamily">글꼴</label>
+            <select id="fontFamily">
+              <option value="'Pretendard', 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif">기본체</option>
+              <option value="'Courier New', 'D2Coding', monospace">타자기체</option>
+              <option value="'Yidstreet', 'Apple SD Gothic Neo', sans-serif">Y이드스트릿체</option>
+              <option value="'Eulyoo1945', serif">을유1945</option>
+              <option value="'PyeojinGothic', 'Apple SD Gothic Neo', sans-serif">펴진고딕</option>
+              <option value="'HsGlidingSerif', 'AppleMyungjo', serif">HS활공명조</option>
+              <option value="'KerisKedyuche', 'Apple SD Gothic Neo', sans-serif">케리스 케듀체</option>
+              <option value="'ChosunIlboMyungjo', 'AppleMyungjo', serif">조선일보명조체</option>
+              <option value="'Mona12', 'Mona', 'Courier New', monospace">Mona12</option>
+              <option value="'MunmakchoHaeban', 'Apple SD Gothic Neo', sans-serif">문막초 해반체</option>
+            </select>
+          </div>
+        </div>
+      </section>
+
+      <section class="section editor-section" id="stickerEditorSection">
+        <h2>
+          <span>스티커</span>
+          <span class="section-title-actions">
+            <button class="btn secondary editor-toggle-btn" id="toggleStickerEditors" type="button" aria-expanded="true">편집</button>
+            <button class="btn secondary" id="addStickerBtn" type="button">사진 추가</button>
+          </span>
+        </h2>
+        <input id="stickerFile" type="file" accept="image/*" />
+        <div class="editor-panel">
+          <div class="tiny" style="margin-bottom: 12px;">드래그로 위치를 옮길 수 있습니다~!!<br>선택한 뒤 쉬프트+휠로 기울기도 바꿀 수 있습니다 ✪ ω ✪</div>
+          <div id="stickerEditors"></div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>저장</h2>
+        <button class="btn full" id="saveImage" type="button">이미지로 저장</button>
+        <div class="backup-actions">
+          <button class="btn secondary" id="saveBackup" type="button">백업 저장</button>
+          <button class="btn secondary" id="loadBackupBtn" type="button">불러오기</button>
+        </div>
+        <input id="loadBackupFile" type="file" accept="application/json,.json" />
+        <div class="tiny" style="margin-top: 10px;">저장 전에 스티커 주위에 선택 표시가 보이면 빈 곳을 한 번 눌러서 선택을 풀어주세요 （〃｀ 3′〃）</div>
+      </section>
+    </aside>
+
+    <section class="preview-wrap">
+      <div class="preview-actions">
+        <strong>미리보기</strong>
+      </div>
+      <div class="canvas-area">
+        <article id="profileCard" class="pattern-soft">
+          <div class="decor-bg"></div>
+          <div class="card-inner">
+            <header class="card-header" id="basicInfoCard">
+              <div class="title-box">
+                <div class="profile-photo" id="profilePhotoPreview"><span>프로필 사진</span></div>
+                <div class="title-content">
+                  <span class="eyebrow" id="cardEyebrow">@6xyzvvvvv</span>
+                  <h3 id="cardName">판</h3>
+                  <p id="cardIntro"></p>
+                </div>
+              </div>
+              <div class="hero-photo" id="heroPhoto"><span>대표 사진</span></div>
+            </header>
+
+            <section class="info-grid">
+              <div class="info-card wide merged-chip-card" id="chipInfoCard">
+                <div class="chip-section" id="platformBlock">
+                  <span class="chip-subtitle">플랫폼</span>
+                  <div class="chips" id="cardPlatforms"></div>
+                </div>
+                <div class="chip-section" id="tendencyBlock">
+                  <span class="chip-subtitle">성향</span>
+                  <div class="chips" id="cardTendency"></div>
+                </div>
+                <div class="chip-section" id="activityBlock">
+                  <span class="chip-subtitle">활동성향</span>
+                  <div class="chips" id="cardActivity"></div>
+                </div>
+              </div>
+              <div class="info-card wide" id="infoTextCard">
+                <h4>INFOR</h4>
+                <p id="cardWarnings"></p>
+              </div>
+              <div class="info-card wide" id="loveCard">
+                <h4>LOVE</h4>
+                <div class="pair-list" id="cardPairs"></div>
+              </div>
+            </section>
+          </div>
+          <div class="credit">@6xyzvvvvv</div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const chipOptions = {
+      platforms: ['케이브덕', '로판AI', '티팟', '엘린', '제타', '팅글', '플레이툰'],
+      tendency: ['HL', 'BL', 'GL', 'ALL', 'NPC'],
+      activity: ['제작', '소비', '로그', 'RT/인용', 'AI이미지', '사담', '맘찍', '구독']
+    };
+
+    const state = {
+      pairs: [{ id: crypto.randomUUID(), name: '페어명', met: '2025-11-28', memo: '', image: '', layout: 'basic' }],
+      stickers: [],
+      selectedStickerId: null,
+      profileSrc: '',
+      hero: { src: '', x: 0, y: 0, scale: 100 },
+      chips: { platforms: ['케이브덕', '로판AI'], tendency: ['HL'], activity: ['소비'] },
+      visible: { basic: true, platforms: true, tendency: true, activity: true, info: true, love: true }
+    };
+
+    const $ = (id) => document.getElementById(id);
+    const profileCard = $('profileCard');
+
+
+    function setupMobileSheet() {
+      const sheet = $('editSheet');
+      const handle = $('sheetHandle');
+      const expandBtn = $('sheetExpand');
+      const collapseBtn = $('sheetCollapse');
+      if (!sheet || !handle) return;
+
+      const mobileQuery = window.matchMedia('(max-width: 760px)');
+      let dragging = false;
+      let startY = 0;
+      let startTranslate = 0;
+      let currentTranslate = 0;
+
+      function collapsedTranslate() {
+        const peek = window.innerWidth <= 480 ? 78 : 82;
+        return Math.max(0, sheet.offsetHeight - peek);
+      }
+
+      function setExpanded(expanded) {
+        document.body.classList.toggle('sheet-open', expanded);
+        document.body.classList.toggle('sheet-collapsed', !expanded);
+        document.body.classList.remove('sheet-dragging');
+        sheet.style.removeProperty('--sheet-translate');
+        handle.setAttribute('aria-expanded', String(expanded));
+      }
+
+      function resetForViewport() {
+        if (mobileQuery.matches) {
+          if (!document.body.classList.contains('sheet-open')) setExpanded(false);
+        } else {
+          document.body.classList.remove('sheet-open', 'sheet-collapsed', 'sheet-dragging');
+          sheet.style.removeProperty('--sheet-translate');
+        }
+      }
+
+      handle.addEventListener('click', event => {
+        if (!mobileQuery.matches || event.target.closest('button')) return;
+        setExpanded(!document.body.classList.contains('sheet-open'));
+      });
+
+      handle.addEventListener('keydown', event => {
+        if (!mobileQuery.matches) return;
+        if (event.key === 'Enter' || event.key === ' ') {
+          event.preventDefault();
+          setExpanded(!document.body.classList.contains('sheet-open'));
+        }
+      });
+
+      expandBtn?.addEventListener('click', event => {
+        event.stopPropagation();
+        setExpanded(true);
+      });
+
+      collapseBtn?.addEventListener('click', event => {
+        event.stopPropagation();
+        setExpanded(false);
+      });
+
+      handle.addEventListener('pointerdown', event => {
+        if (!mobileQuery.matches || event.target.closest('button')) return;
+        dragging = true;
+        startY = event.clientY;
+        startTranslate = document.body.classList.contains('sheet-open') ? 0 : collapsedTranslate();
+        currentTranslate = startTranslate;
+        document.body.classList.add('sheet-dragging');
+        document.body.classList.remove('sheet-open', 'sheet-collapsed');
+        sheet.style.setProperty('--sheet-translate', `${currentTranslate}px`);
+        handle.setPointerCapture(event.pointerId);
+      });
+
+      handle.addEventListener('pointermove', event => {
+        if (!dragging) return;
+        const max = collapsedTranslate();
+        currentTranslate = Math.min(max, Math.max(0, startTranslate + event.clientY - startY));
+        sheet.style.setProperty('--sheet-translate', `${currentTranslate}px`);
+      });
+
+      function finishDrag() {
+        if (!dragging) return;
+        dragging = false;
+        const shouldOpen = currentTranslate < collapsedTranslate() * 0.55;
+        setExpanded(shouldOpen);
+      }
+
+      handle.addEventListener('pointerup', finishDrag);
+      handle.addEventListener('pointercancel', finishDrag);
+      mobileQuery.addEventListener?.('change', resetForViewport);
+      window.addEventListener('resize', resetForViewport);
+      resetForViewport();
+    }
+
+    const inputs = {
+      eyebrowText: $('eyebrowText'),
+      displayName: $('displayName'),
+      profilePhoto: $('profilePhoto'),
+      intro: $('intro'),
+      mainPhoto: $('mainPhoto'),
+      heroX: $('heroX'),
+      heroY: $('heroY'),
+      heroScale: $('heroScale'),
+      warnings: $('warnings'),
+      bgColor: $('bgColor'),
+      accentColor: $('accentColor'),
+      textColor: $('textColor'),
+      cardRadius: $('cardRadius'),
+      pattern: $('pattern'),
+      fontFamily: $('fontFamily')
+    };
+
+
+    const undoStack = [];
+    const MAX_UNDO = 80;
+    let isRestoringUndo = false;
+
+    function clonePlain(value) {
+      return JSON.parse(JSON.stringify(value));
+    }
+
+    function makeSnapshot() {
+      const fields = {};
+      Object.entries(inputs).forEach(([key, input]) => {
+        if (input && input.type !== 'file') fields[key] = input.value;
+      });
+      return {
+        fields,
+        state: clonePlain({
+          pairs: state.pairs,
+          stickers: state.stickers,
+          selectedStickerId: state.selectedStickerId,
+          profileSrc: state.profileSrc,
+          hero: state.hero,
+          chips: state.chips,
+          visible: state.visible
+        })
+      };
+    }
+
+    function sameSnapshot(a, b) {
+      return JSON.stringify(a) === JSON.stringify(b);
+    }
+
+    function updateUndoButton() {
+      const button = $('undoButton');
+      if (button) button.disabled = undoStack.length === 0;
+    }
+
+    function pushUndoSnapshot(snapshot = makeSnapshot()) {
+      if (isRestoringUndo) return;
+      const last = undoStack[undoStack.length - 1];
+      if (last && sameSnapshot(last, snapshot)) return;
+      undoStack.push(snapshot);
+      if (undoStack.length > MAX_UNDO) undoStack.shift();
+      updateUndoButton();
+    }
+
+    function restoreSnapshot(snapshot) {
+      if (!snapshot) return;
+      isRestoringUndo = true;
+      Object.entries(snapshot.fields || {}).forEach(([key, value]) => {
+        if (inputs[key] && inputs[key].type !== 'file') inputs[key].value = value ?? '';
+      });
+      const savedState = snapshot.state || {};
+      state.pairs = clonePlain(savedState.pairs || []);
+      state.stickers = clonePlain(savedState.stickers || []);
+      state.selectedStickerId = savedState.selectedStickerId || null;
+      state.profileSrc = savedState.profileSrc || '';
+      state.hero = clonePlain(savedState.hero || { src: '', x: 0, y: 0, scale: 100 });
+      state.chips = clonePlain(savedState.chips || { platforms: [], tendency: [], activity: [] });
+      state.visible = clonePlain(savedState.visible || { basic: true, platforms: true, tendency: true, activity: true, info: true, love: true });
+      inputs.heroX.value = state.hero.x;
+      inputs.heroY.value = state.hero.y;
+      inputs.heroScale.value = state.hero.scale;
+      inputs.profilePhoto.value = '';
+      inputs.mainPhoto.value = '';
+      renderChipControls();
+      renderPairEditors();
+      renderStickerEditors();
+      render();
+      isRestoringUndo = false;
+    }
+
+    function undoLastChange() {
+      const snapshot = undoStack.pop();
+      updateUndoButton();
+      if (!snapshot) return;
+      restoreSnapshot(snapshot);
+    }
+
+    function setupEditorToggle(sectionId, buttonId) {
+      const section = $(sectionId);
+      const button = $(buttonId);
+      if (!section || !button) return;
+      const setCollapsed = (collapsed) => {
+        section.classList.toggle('is-editor-collapsed', collapsed);
+        button.setAttribute('aria-expanded', String(!collapsed));
+      };
+      setCollapsed(false);
+      button.addEventListener('click', () => setCollapsed(!section.classList.contains('is-editor-collapsed')));
+    }
+
+    function hexToRgba(hex, alpha) {
+      const clean = hex.replace('#', '');
+      const bigint = parseInt(clean, 16);
+      return `rgba(${(bigint >> 16) & 255}, ${(bigint >> 8) & 255}, ${bigint & 255}, ${alpha})`;
+    }
+
+    function fileToDataUrl(file) {
+      return new Promise(resolve => {
+        const reader = new FileReader();
+        reader.onload = event => resolve(event.target.result);
+        reader.readAsDataURL(file);
+      });
+    }
+
+    function getImageSize(src) {
+      return new Promise(resolve => {
+        const img = new Image();
+        img.onload = () => resolve({ width: img.naturalWidth || 1, height: img.naturalHeight || 1 });
+        img.onerror = () => resolve({ width: 1, height: 1 });
+        img.src = src;
+      });
+    }
+
+    function getStickerFrameHeight(sticker) {
+      const width = Number(sticker.width || 160);
+      const squareLayouts = ['layout-circle', 'layout-square', 'layout-polaroid'];
+      if (squareLayouts.includes(sticker.layout)) return width;
+      const ratio = Number(sticker.ratio || 1);
+      return Math.max(1, width * ratio);
+    }
+
+    function escapeHtml(text) {
+      return String(text)
+        .replaceAll('&', '&amp;')
+        .replaceAll('<', '&lt;')
+        .replaceAll('>', '&gt;')
+        .replaceAll('"', '&quot;')
+        .replaceAll("'", '&#039;');
+    }
+
+
+    function svgEscape(value) {
+      return String(value).replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;').replaceAll('"', '&quot;');
+    }
+
+    function applyPatternBackground() {
+      const decor = document.querySelector('.decor-bg');
+      if (!decor) return;
+
+      const cardHeight = Math.max(1100, Math.ceil(profileCard.scrollHeight || profileCard.offsetHeight || 1100));
+
+      const bg = inputs.bgColor.value;
+      const accent = inputs.accentColor.value;
+      const accentSoft = hexToRgba(accent, 0.20);
+      const accentFaint = hexToRgba(accent, 0.26);
+      const accentLine = hexToRgba(accent, 0.24);
+      const bgSoft = hexToRgba(bg, 0.72);
+      const pattern = inputs.pattern.value;
+
+      decor.style.background = bg;
+      decor.style.backgroundSize = 'auto';
+      decor.style.backgroundRepeat = 'no-repeat';
+      decor.style.backgroundPosition = '0 0';
+      decor.innerHTML = '';
+
+      const safeBg = svgEscape(bg);
+      const safeAccent = svgEscape(accent);
+      const safeAccentSoft = svgEscape(accentSoft);
+      const safeAccentFaint = svgEscape(accentFaint);
+      const safeAccentLine = svgEscape(accentLine);
+      const safeBgSoft = svgEscape(bgSoft);
+
+      let patternMarkup = '';
+
+      if (pattern === 'pattern-dots') {
+        patternMarkup = `
+          <defs>
+            <pattern id="dotPattern" width="22" height="22" patternUnits="userSpaceOnUse">
+              <circle cx="3" cy="3" r="1.8" fill="${safeAccentFaint}" />
+            </pattern>
+            <radialGradient id="accentGlow" cx="82%" cy="88%" r="28%">
+              <stop offset="0%" stop-color="${safeAccentSoft}" />
+              <stop offset="100%" stop-color="${safeAccentSoft}" stop-opacity="0" />
+            </radialGradient>
+          </defs>
+          <rect width="900" height="${cardHeight}" fill="${safeBg}" />
+          <rect width="900" height="${cardHeight}" fill="url(#dotPattern)" />
+          <rect width="900" height="${cardHeight}" fill="url(#accentGlow)" />
+        `;
+      } else if (pattern === 'pattern-grid') {
+        patternMarkup = `
+          <defs>
+            <pattern id="gridPattern" width="34" height="34" patternUnits="userSpaceOnUse">
+              <path d="M 34 0 L 0 0 0 34" fill="none" stroke="${safeAccentLine}" stroke-width="1" />
+            </pattern>
+            <radialGradient id="accentGlow" cx="82%" cy="88%" r="28%">
+              <stop offset="0%" stop-color="${safeAccentSoft}" />
+              <stop offset="100%" stop-color="${safeAccentSoft}" stop-opacity="0" />
+            </radialGradient>
+          </defs>
+          <rect width="900" height="${cardHeight}" fill="${safeBg}" />
+          <rect width="900" height="${cardHeight}" fill="url(#gridPattern)" />
+          <rect width="900" height="${cardHeight}" fill="url(#accentGlow)" />
+        `;
+      } else if (pattern === 'pattern-ribbon') {
+        patternMarkup = `
+          <defs>
+            <linearGradient id="softBg" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="${safeBgSoft}" />
+              <stop offset="100%" stop-color="rgba(255,255,255,.22)" />
+            </linearGradient>
+            <radialGradient id="accentGlow" cx="82%" cy="88%" r="28%">
+              <stop offset="0%" stop-color="${safeAccentSoft}" />
+              <stop offset="100%" stop-color="${safeAccentSoft}" stop-opacity="0" />
+            </radialGradient>
+          </defs>
+          <rect width="900" height="${cardHeight}" fill="${safeBg}" />
+          <rect width="900" height="${cardHeight}" fill="url(#softBg)" />
+          <rect width="900" height="${cardHeight}" fill="url(#accentGlow)" />
+          <rect x="690" y="-18" width="220" height="44" rx="22" fill="${safeAccent}" opacity="0.28" transform="rotate(-32 800 44)" />
+          <rect x="-82" y="${cardHeight - 85}" width="220" height="44" rx="22" fill="${safeAccent}" opacity="0.28" transform="rotate(-32 28 ${cardHeight - 63})" />
+        `;
+      } else {
+        patternMarkup = `
+          <defs>
+            <linearGradient id="softBg" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="${safeBgSoft}" />
+              <stop offset="100%" stop-color="rgba(255,255,255,.22)" />
+            </linearGradient>
+            <radialGradient id="accentGlow" cx="82%" cy="88%" r="28%">
+              <stop offset="0%" stop-color="${safeAccentSoft}" />
+              <stop offset="100%" stop-color="${safeAccentSoft}" stop-opacity="0" />
+            </radialGradient>
+          </defs>
+          <rect width="900" height="${cardHeight}" fill="${safeBg}" />
+          <rect width="900" height="${cardHeight}" fill="url(#softBg)" />
+          <rect width="900" height="${cardHeight}" fill="url(#accentGlow)" />
+        `;
+      }
+
+      decor.innerHTML = `
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 ${cardHeight}" preserveAspectRatio="none" aria-hidden="true">
+          ${patternMarkup}
+        </svg>
+      `;
+    }
+
+    function addChip(group, value) {
+      const text = value.trim();
+      if (!text || state.chips[group].includes(text)) return;
+      pushUndoSnapshot();
+      state.chips[group].push(text);
+      renderChipControls();
+      render();
+    }
+
+    function removeChip(group, value) {
+      pushUndoSnapshot();
+      state.chips[group] = state.chips[group].filter(item => item !== value);
+      renderChipControls();
+      render();
+    }
+
+    function renderChipControls() {
+      renderChipGroup('platforms', 'platformOptions', 'platformSelected');
+      renderChipGroup('tendency', 'tendencyOptions', 'tendencySelected');
+      renderChipGroup('activity', 'activityOptions', 'activitySelected');
+    }
+
+    function renderChipGroup(group, optionId, selectedId) {
+      $(optionId).innerHTML = chipOptions[group].map(item => `
+        <button class="mini-chip ${state.chips[group].includes(item) ? 'active' : ''}" type="button" data-chip-option="${group}" data-chip-value="${escapeHtml(item)}">${escapeHtml(item)}</button>
+      `).join('');
+
+      $(selectedId).innerHTML = state.chips[group].length
+        ? state.chips[group].map(item => `<span class="selected-chip">${escapeHtml(item)} <button type="button" data-remove-chip="${group}" data-chip-value="${escapeHtml(item)}">×</button></span>`).join('')
+        : '<span class="tiny">(⊙_⊙;)</span>';
+    }
+
+    function renderChipList(targetId, items, emptyText) {
+      $(targetId).innerHTML = items.length
+        ? items.map(item => `<span class="chip">${escapeHtml(item)}</span>`).join('')
+        : `<span class="empty-text">${escapeHtml(emptyText)}</span>`;
+    }
+
+    function setHidden(id, hidden) {
+      const node = $(id);
+      if (node) node.classList.toggle('is-hidden', hidden);
+    }
+
+    function renderVisibility() {
+      setHidden('basicInfoCard', !state.visible.basic);
+      setHidden('platformBlock', !state.visible.platforms);
+      setHidden('tendencyBlock', !state.visible.tendency);
+      setHidden('activityBlock', !state.visible.activity);
+      setHidden('infoTextCard', !state.visible.info);
+      setHidden('loveCard', !state.visible.love);
+
+      const chipCardHidden = !state.visible.platforms && !state.visible.tendency && !state.visible.activity;
+      setHidden('chipInfoCard', chipCardHidden);
+
+      const toggleMap = {
+        basic: 'toggleBasic',
+        platforms: 'togglePlatforms',
+        tendency: 'toggleTendency',
+        activity: 'toggleActivity',
+        info: 'toggleInfo',
+        love: 'toggleLove'
+      };
+
+      Object.entries(toggleMap).forEach(([key, id]) => {
+        const button = $(id);
+        if (!button) return;
+        button.classList.toggle('is-hidden', !state.visible[key]);
+        button.setAttribute('aria-pressed', String(state.visible[key]));
+      });
+    }
+
+    let renderPending = false;
+    function scheduleRender() {
+      if (renderPending) return;
+      renderPending = true;
+      requestAnimationFrame(() => {
+        renderPending = false;
+        render();
+      });
+    }
+
+    function render() {
+      $('cardEyebrow').textContent = inputs.eyebrowText.value || '@6xyzvvvvv';
+      $('cardName').textContent = inputs.displayName.value || '판';
+
+      const introText = inputs.intro.value.trim();
+      $('cardIntro').textContent = introText;
+      $('cardIntro').style.display = introText ? 'block' : 'none';
+      
+      $('cardWarnings').textContent = inputs.warnings.value || '';
+
+      renderChipList('cardPlatforms', state.chips.platforms, '');
+      renderChipList('cardTendency', state.chips.tendency, '');
+      renderChipList('cardActivity', state.chips.activity, '');
+      renderVisibility();
+
+      document.documentElement.style.setProperty('--accent', inputs.accentColor.value);
+      document.documentElement.style.setProperty('--accent-soft', hexToRgba(inputs.accentColor.value, 0.18));
+      document.documentElement.style.setProperty('--border', hexToRgba(inputs.accentColor.value, 0.32));
+
+      profileCard.style.setProperty('--card-bg', inputs.bgColor.value);
+      profileCard.style.setProperty('--card-accent', inputs.accentColor.value);
+      profileCard.style.setProperty('--card-accent-soft', hexToRgba(inputs.accentColor.value, 0.18));
+      profileCard.style.setProperty('--card-accent-faint', hexToRgba(inputs.accentColor.value, 0.14));
+      profileCard.style.setProperty('--card-accent-line', hexToRgba(inputs.accentColor.value, 0.16));
+      profileCard.style.setProperty('--card-bg-soft', hexToRgba(inputs.bgColor.value, 0.72));
+      profileCard.style.setProperty('--card-bg-pattern', hexToRgba(inputs.bgColor.value, 0.20));
+      profileCard.style.setProperty('--card-ribbon-opacity', '0.28');
+      profileCard.style.setProperty('--card-ink', inputs.textColor.value);
+      profileCard.style.setProperty('--card-muted', hexToRgba(inputs.textColor.value, 0.66));
+      profileCard.style.setProperty('--card-radius', `${inputs.cardRadius.value}px`);
+      profileCard.style.setProperty('--card-font', inputs.fontFamily.value);
+      profileCard.style.setProperty('--hero-x', `${state.hero.x}px`);
+      profileCard.style.setProperty('--hero-y', `${state.hero.y}px`);
+      profileCard.style.setProperty('--hero-scale', state.hero.scale / 100);
+      profileCard.className = inputs.pattern.value;
+
+      renderProfilePhoto();
+      renderHeroPhoto();
+      renderPairs();
+      applyPatternBackground();
+      renderStickers();
+    }
+
+    function renderProfilePhoto() {
+      const preview = $('profilePhotoPreview');
+      preview.classList.toggle('has-image', !!state.profileSrc);
+      preview.style.removeProperty('--profile-image');
+
+      if (state.profileSrc) {
+        preview.innerHTML = `<img src="${state.profileSrc}" alt="프로필 사진">`;
+      } else {
+        preview.innerHTML = '<span>프로필 사진</span>';
+      }
+
+      const removeButton = $('removeProfilePhoto');
+      if (removeButton) removeButton.disabled = !state.profileSrc;
+    }
+
+    function renderHeroPhoto() {
+      const heroPhoto = $('heroPhoto');
+      heroPhoto.classList.toggle('has-image', !!state.hero.src);
+      heroPhoto.style.setProperty('--hero-image', state.hero.src ? `url('${state.hero.src}')` : 'none');
+      heroPhoto.innerHTML = state.hero.src ? '<div class="hero-bg" role="img" aria-label="대표 사진"></div><span>대표 사진</span>' : '<span>대표 사진</span>';
+      const removeButton = $('removeMainPhoto');
+      if (removeButton) removeButton.disabled = !state.hero.src;
+    }
+
+    function renderPairEditors() {
+      const wrap = $('pairEditors');
+      wrap.innerHTML = state.pairs.map((pair, index) => `
+        <div class="pair-editor" data-pair-id="${pair.id}">
+          <div class="pair-editor-top">
+            <strong>페어 ${index + 1}</strong>
+            <div class="pair-move-actions">
+              <button class="btn secondary" type="button" data-move-pair="${pair.id}" data-move-direction="up" ${index === 0 ? 'disabled' : ''}>위로</button>
+              <button class="btn secondary" type="button" data-move-pair="${pair.id}" data-move-direction="down" ${index === state.pairs.length - 1 ? 'disabled' : ''}>아래로</button>
+            </div>
+          </div>
+          <div class="form-grid">
+            <div class="field">
+              <label>페어 이름</label>
+              <input type="text" data-pair-field="name" value="${escapeHtml(pair.name)}" />
+            </div>
+            <div class="field">
+              <label>날짜</label>
+              <input type="date" data-pair-field="met" value="${escapeHtml(pair.met)}" />
+            </div>
+            <div class="field">
+              <label>레이아웃</label>
+              <select data-pair-field="layout">
+                <option value="basic" ${(pair.layout || 'basic') === 'basic' ? 'selected' : ''}>카드형</option>
+                <option value="cover" ${(pair.layout || 'basic') === 'cover' ? 'selected' : ''}>사진형</option>
+                <option value="text" ${(pair.layout || 'basic') === 'text' ? 'selected' : ''}>텍스트형</option>
+              </select>
+            </div>
+            <div class="field">
+              <label>사진</label>
+              <label class="file-btn" for="pairImage-${pair.id}">사진 추가</label>
+              <input id="pairImage-${pair.id}" type="file" accept="image/*" data-pair-field="image" />
+            </div>
+            <div class="field">
+              <label>&nbsp;</label>
+              <button class="btn danger" type="button" data-remove-pair="${pair.id}" ${state.pairs.length === 1 ? 'disabled style="opacity:.45; cursor:not-allowed"' : ''}>삭제</button>
+            </div>
+            <div class="field full">
+              <label>메모</label>
+              <textarea data-pair-field="memo">${escapeHtml(pair.memo)}</textarea>
+            </div>
+          </div>
+        </div>
+      `).join('');
+
+      wrap.querySelectorAll('[data-pair-field]').forEach(input => {
+        input.addEventListener('input', async event => {
+          const editor = event.target.closest('.pair-editor');
+          const pair = state.pairs.find(item => item.id === editor.dataset.pairId);
+          const field = event.target.dataset.pairField;
+          if (!pair) return;
+          if (!event.target.dataset.undoStarted) {
+            event.target.dataset.undoStarted = 'true';
+            pushUndoSnapshot();
+          }
+          if (field === 'image') {
+            const file = event.target.files[0];
+            if (file) pair.image = await fileToDataUrl(file);
+          } else {
+            pair[field] = event.target.value;
+          }
+          render();
+        });
+      });
+
+      wrap.querySelectorAll('[data-move-pair]').forEach(button => {
+        button.addEventListener('click', () => {
+          const index = state.pairs.findIndex(pair => pair.id === button.dataset.movePair);
+          if (index < 0) return;
+          const nextIndex = button.dataset.moveDirection === 'up' ? index - 1 : index + 1;
+          if (nextIndex < 0 || nextIndex >= state.pairs.length) return;
+          pushUndoSnapshot();
+          [state.pairs[index], state.pairs[nextIndex]] = [state.pairs[nextIndex], state.pairs[index]];
+          renderPairEditors();
+          render();
+        });
+      });
+
+      wrap.querySelectorAll('[data-remove-pair]').forEach(button => {
+        button.addEventListener('click', () => {
+          pushUndoSnapshot();
+          state.pairs = state.pairs.filter(pair => pair.id !== button.dataset.removePair);
+          renderPairEditors();
+          render();
+        });
+      });
+    }
+
+    function applyOutlineColorToAll(color) {
+      const nextColor = color || '#ffffff';
+      state.stickers.forEach(item => {
+        item.outlineColor = nextColor;
+      });
+      profileCard.querySelectorAll('.sticker').forEach(node => {
+        node.style.setProperty('--sticker-outline-color', nextColor);
+      });
+      document.querySelectorAll('input[type="color"][data-sticker-field="outlineColor"]').forEach(input => {
+        input.value = nextColor;
+      });
+    }
+
+    function renderPairs() {
+      const wrap = $('cardPairs');
+      wrap.className = 'pair-list';
+
+      wrap.innerHTML = state.pairs.map(pair => {
+        const layout = pair.layout || 'basic';
+
+        if (layout === 'cover') {
+          return `
+            <div class="pair-card cover">
+              ${pair.image ? `<div class="pair-cover-bg" style="background-image:url('${pair.image}')"></div>` : '<div class="pair-cover-bg empty"><span>페어 사진</span></div>'}
+              <div class="pair-meta">
+                <strong>${escapeHtml(pair.name || '')}</strong>
+                <span>${escapeHtml(pair.met || '')}</span>
+                <span>${escapeHtml(pair.memo || '')}</span>
+              </div>
+            </div>
+          `;
+        }
+
+        if (layout === 'text') {
+          return `
+            <div class="pair-card text-only">
+              <div class="pair-meta">
+                <strong>${escapeHtml(pair.name || '')}</strong>
+                <span>${escapeHtml(pair.met || '')}</span>
+                <span>${escapeHtml(pair.memo || '')}</span>
+              </div>
+            </div>
+          `;
+        }
+
+        return `
+          <div class="pair-card">
+            <div class="pair-img">
+              ${pair.image ? `<div class="fit-bg" role="img" aria-label="${escapeHtml(pair.name)} 사진" style="background-image:url('${pair.image}')"></div>` : '<span>페어 사진</span>'}
+            </div>
+            <div class="pair-meta">
+              <strong>${escapeHtml(pair.name || '')}</strong>
+              <span>${escapeHtml(pair.met || '')}</span>
+              <span>${escapeHtml(pair.memo || '')}</span>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function renderStickerEditors() {
+      const wrap = $('stickerEditors');
+      if (!state.stickers.length) {
+        wrap.innerHTML = '<div class="tiny">(；′⌒`) 스티커 추가하면 짱귀여운데...</div>';
+        return;
+      }
+
+      wrap.innerHTML = state.stickers.map((sticker, index) => `
+        <div class="sticker-editor" data-sticker-editor="${sticker.id}">
+          <div class="pair-editor-top">
+            <strong>사진 ${index + 1}</strong>
+            <div class="sticker-action-row">
+              <button class="btn secondary sticker-order-btn" type="button" data-sticker-back="${sticker.id}">뒤로</button>
+              <button class="btn secondary sticker-order-btn" type="button" data-sticker-front="${sticker.id}">앞으로</button>
+              <button class="btn danger sticker-order-btn" type="button" data-remove-sticker="${sticker.id}">삭제</button>
+            </div>
+          </div>
+          <div class="form-grid">
+            <div class="field">
+              <label>레이아웃</label>
+              <select data-sticker-field="layout">
+                <option value="layout-rounded" ${sticker.layout === 'layout-rounded' ? 'selected' : ''}>둥근 사진</option>
+                <option value="layout-circle" ${sticker.layout === 'layout-circle' ? 'selected' : ''}>동그라미</option>
+                <option value="layout-square" ${sticker.layout === 'layout-square' ? 'selected' : ''}>정사각</option>
+                <option value="layout-soft" ${sticker.layout === 'layout-soft' ? 'selected' : ''}>말랑 둥근</option>
+                <option value="layout-polaroid" ${sticker.layout === 'layout-polaroid' ? 'selected' : ''}>폴라로이드</option>
+                <option value="layout-tape" ${sticker.layout === 'layout-tape' ? 'selected' : ''}>테이프</option>
+              </select>
+            </div>
+            <div class="field">
+              <label>크기</label>
+              <input type="range" min="60" max="420" step="0.1" value="${sticker.width}" data-sticker-field="width" />
+            </div>
+            <div class="field">
+              <label>기울기</label>
+              <input type="range" min="-180" max="180" value="${sticker.rotate}" data-sticker-field="rotate" />
+            </div>
+            <div class="field">
+              <label>투명도</label>
+              <input type="range" min="20" max="100" value="${sticker.opacity}" data-sticker-field="opacity" />
+            </div>
+            <div class="field">
+              <label>아웃라인</label>
+              <select data-sticker-field="outlineVisible">
+                <option value="true" ${sticker.outlineVisible !== false ? 'selected' : ''}>보이게</option>
+                <option value="false" ${sticker.outlineVisible === false ? 'selected' : ''}>안 보이게</option>
+              </select>
+            </div>
+            <div class="field">
+              <label>아웃라인 색</label>
+              <input type="color" value="${sticker.outlineColor || '#ffffff'}" data-sticker-field="outlineColor" />
+              <div class="outline-sync-actions">
+                <button class="btn secondary" type="button" data-sync-outline-custom="${sticker.id}">지정색 동기화</button>
+                <button class="btn secondary" type="button" data-sync-outline-accent="${sticker.id}">포인트색 동기화</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      `).join('');
+
+      wrap.querySelectorAll('[data-sticker-field]').forEach(input => {
+        input.addEventListener('input', event => {
+          const editor = event.target.closest('.sticker-editor');
+          const sticker = state.stickers.find(item => item.id === editor.dataset.stickerEditor);
+          if (!sticker) return;
+          const field = event.target.dataset.stickerField;
+          state.selectedStickerId = sticker.id;
+          if (!event.target.dataset.undoStarted) {
+            event.target.dataset.undoStarted = 'true';
+            pushUndoSnapshot();
+          }
+
+          if (field === 'layout') {
+            sticker.layout = event.target.value;
+            renderStickers();
+            return;
+          }
+
+          if (field === 'outlineVisible') {
+            sticker.outlineVisible = event.target.value === 'true';
+            const stickerNode = profileCard.querySelector(`[data-sticker-id="${sticker.id}"]`);
+            if (stickerNode) stickerNode.classList.toggle('outline-hidden', sticker.outlineVisible === false);
+            return;
+          }
+
+          if (field === 'outlineColor') {
+            sticker.outlineColor = event.target.value;
+            const stickerNode = profileCard.querySelector(`[data-sticker-id="${sticker.id}"]`);
+            if (stickerNode) stickerNode.style.setProperty('--sticker-outline-color', sticker.outlineColor || '#ffffff');
+            return;
+          }
+
+          sticker[field] = Number(event.target.value);
+
+          const stickerNode = profileCard.querySelector(`[data-sticker-id="${sticker.id}"]`);
+          if (stickerNode) {
+            profileCard.querySelectorAll('.sticker.selected').forEach(node => node.classList.remove('selected'));
+            stickerNode.classList.add('selected');
+            if (field === 'width') stickerNode.style.width = `${sticker.width}px`;
+            if (field === 'width') stickerNode.style.setProperty('--sticker-frame-height', `${getStickerFrameHeight(sticker)}px`);
+            if (field === 'rotate') stickerNode.style.transform = `rotate(${sticker.rotate}deg)`;
+            if (field === 'opacity') stickerNode.style.opacity = `${sticker.opacity / 100}`;
+          }
+        });
+      });
+
+      wrap.querySelectorAll('input[type="color"][data-sticker-field="outlineColor"]').forEach(input => {
+        ['pointerdown', 'mousedown', 'click', 'touchstart'].forEach(type => {
+          input.addEventListener(type, event => event.stopPropagation());
+        });
+      });
+
+      wrap.querySelectorAll('[data-sync-outline-custom]').forEach(button => {
+        button.addEventListener('click', event => {
+          event.stopPropagation();
+          const sticker = state.stickers.find(item => item.id === button.dataset.syncOutlineCustom);
+          if (!sticker) return;
+          pushUndoSnapshot();
+          state.selectedStickerId = sticker.id;
+          applyOutlineColorToAll(sticker.outlineColor || '#ffffff');
+          renderStickers();
+          renderStickerEditors();
+        });
+      });
+
+      wrap.querySelectorAll('[data-sync-outline-accent]').forEach(button => {
+        button.addEventListener('click', event => {
+          event.stopPropagation();
+          const sticker = state.stickers.find(item => item.id === button.dataset.syncOutlineAccent);
+          if (!sticker) return;
+          pushUndoSnapshot();
+          state.selectedStickerId = sticker.id;
+          applyOutlineColorToAll(inputs.accentColor.value || '#ff8fc1');
+          renderStickers();
+          renderStickerEditors();
+        });
+      });
+
+      wrap.querySelectorAll('[data-sticker-front]').forEach(button => {
+        button.addEventListener('click', () => {
+          const sticker = state.stickers.find(item => item.id === button.dataset.stickerFront);
+          if (!sticker) return;
+          pushUndoSnapshot();
+          sticker.z = Math.max(4, ...state.stickers.map(item => item.z ?? 4)) + 1;
+          state.selectedStickerId = sticker.id;
+          renderStickers();
+        });
+      });
+
+      wrap.querySelectorAll('[data-sticker-back]').forEach(button => {
+        button.addEventListener('click', () => {
+          const sticker = state.stickers.find(item => item.id === button.dataset.stickerBack);
+          if (!sticker) return;
+          pushUndoSnapshot();
+          sticker.z = Math.max(1, Math.min(4, ...state.stickers.map(item => item.z ?? 4)) - 1);
+          state.selectedStickerId = sticker.id;
+          renderStickers();
+        });
+      });
+
+      wrap.querySelectorAll('[data-remove-sticker]').forEach(button => {
+        button.addEventListener('click', () => {
+          pushUndoSnapshot();
+          state.stickers = state.stickers.filter(item => item.id !== button.dataset.removeSticker);
+          if (state.selectedStickerId === button.dataset.removeSticker) state.selectedStickerId = null;
+          renderStickerEditors();
+          render();
+        });
+      });
+    }
+
+    function renderStickers() {
+      profileCard.querySelectorAll('.sticker').forEach(node => node.remove());
+      state.stickers.forEach(sticker => {
+        const node = document.createElement('div');
+        node.className = `sticker ${sticker.layout} ${sticker.outlineVisible === false ? 'outline-hidden' : ''} ${state.selectedStickerId === sticker.id ? 'selected' : ''}`;
+        node.dataset.stickerId = sticker.id;
+        node.style.setProperty('--sticker-outline-color', sticker.outlineColor || '#ffffff');
+        node.style.left = `${sticker.x}px`;
+        node.style.top = `${sticker.y}px`;
+        node.style.width = `${sticker.width}px`;
+        node.style.setProperty('--sticker-frame-height', `${getStickerFrameHeight(sticker)}px`);
+        node.style.transform = `rotate(${sticker.rotate}deg)`;
+        node.style.opacity = `${sticker.opacity / 100}`;
+        node.style.zIndex = String(sticker.z ?? 4);
+        node.innerHTML = `<div class="sticker-frame"><div class="sticker-image" role="img" aria-label="스티커" style="background-image:url('${sticker.src}')"></div></div>`;
+        profileCard.appendChild(node);
+        makeDraggable(node, sticker);
+      });
+    }
+
+    function makeDraggable(node, target) {
+      let dragging = false;
+      let startX = 0;
+      let startY = 0;
+      let baseX = 0;
+      let baseY = 0;
+
+      node.addEventListener('pointerdown', event => {
+        pushUndoSnapshot();
+        dragging = true;
+        state.selectedStickerId = target.id;
+        startX = event.clientX;
+        startY = event.clientY;
+        baseX = target.x;
+        baseY = target.y;
+        node.classList.add('selected');
+        node.setPointerCapture(event.pointerId);
+      });
+
+      node.addEventListener('pointermove', event => {
+        if (!dragging) return;
+        const cardRect = profileCard.getBoundingClientRect();
+        const scale = cardRect.width / profileCard.offsetWidth;
+        target.x = baseX + (event.clientX - startX) / scale;
+        target.y = baseY + (event.clientY - startY) / scale;
+        node.style.left = `${target.x}px`;
+        node.style.top = `${target.y}px`;
+      });
+
+      node.addEventListener('pointerup', () => {
+        dragging = false;
+        renderStickerEditors();
+      });
+
+      node.addEventListener('wheel', event => {
+        if (!event.shiftKey) return;
+        event.preventDefault();
+        pushUndoSnapshot();
+        state.selectedStickerId = target.id;
+        target.rotate = Math.max(-180, Math.min(180, target.rotate + (event.deltaY > 0 ? 3 : -3)));
+        node.style.transform = `rotate(${target.rotate}deg)`;
+        renderStickerEditors();
+      }, { passive: false });
+    }
+
+    function makeHeroDraggable() {
+      const heroPhoto = $('heroPhoto');
+      let dragging = false;
+      let startX = 0;
+      let startY = 0;
+      let baseX = 0;
+      let baseY = 0;
+
+      heroPhoto.addEventListener('pointerdown', event => {
+        if (!state.hero.src) return;
+        pushUndoSnapshot();
+        dragging = true;
+        startX = event.clientX;
+        startY = event.clientY;
+        baseX = state.hero.x;
+        baseY = state.hero.y;
+        heroPhoto.setPointerCapture(event.pointerId);
+      });
+
+      heroPhoto.addEventListener('pointermove', event => {
+        if (!dragging) return;
+        const rect = heroPhoto.getBoundingClientRect();
+        const scale = rect.width / heroPhoto.offsetWidth;
+        state.hero.x = Math.max(-180, Math.min(180, baseX + (event.clientX - startX) / scale));
+        state.hero.y = Math.max(-180, Math.min(180, baseY + (event.clientY - startY) / scale));
+        inputs.heroX.value = Math.round(state.hero.x);
+        inputs.heroY.value = Math.round(state.hero.y);
+        profileCard.style.setProperty('--hero-x', `${state.hero.x}px`);
+        profileCard.style.setProperty('--hero-y', `${state.hero.y}px`);
+      });
+
+      heroPhoto.addEventListener('pointerup', () => { dragging = false; });
+    }
+
+    inputs.profilePhoto.addEventListener('change', async event => {
+      const file = event.target.files[0];
+      if (!file) return;
+      pushUndoSnapshot();
+      state.profileSrc = await fileToDataUrl(file);
+      render();
+    });
+
+    $('removeProfilePhoto').addEventListener('click', () => {
+      pushUndoSnapshot();
+      state.profileSrc = '';
+      inputs.profilePhoto.value = '';
+      render();
+    });
+
+    inputs.mainPhoto.addEventListener('change', async event => {
+      const file = event.target.files[0];
+      if (!file) return;
+      pushUndoSnapshot();
+      state.hero.src = await fileToDataUrl(file);
+      state.hero.x = 0;
+      state.hero.y = 0;
+      state.hero.scale = 100;
+      inputs.heroX.value = 0;
+      inputs.heroY.value = 0;
+      inputs.heroScale.value = 100;
+      render();
+    });
+
+    $('removeMainPhoto').addEventListener('click', () => {
+      pushUndoSnapshot();
+      state.hero.src = '';
+      state.hero.x = 0;
+      state.hero.y = 0;
+      state.hero.scale = 100;
+      inputs.mainPhoto.value = '';
+      inputs.heroX.value = 0;
+      inputs.heroY.value = 0;
+      inputs.heroScale.value = 100;
+      render();
+    });
+
+    [inputs.heroX, inputs.heroY, inputs.heroScale].forEach(input => {
+      input.addEventListener('input', () => {
+        if (!input.dataset.undoStarted) {
+          input.dataset.undoStarted = 'true';
+          pushUndoSnapshot();
+        }
+        state.hero.x = Number(inputs.heroX.value);
+        state.hero.y = Number(inputs.heroY.value);
+        state.hero.scale = Number(inputs.heroScale.value);
+        scheduleRender();
+      });
+    });
+
+    Object.values(inputs).forEach(input => {
+      if (input && input.type !== 'file' && !['heroX', 'heroY', 'heroScale'].includes(input.id)) {
+        input.addEventListener('input', () => {
+          if (!input.dataset.undoStarted) {
+            input.dataset.undoStarted = 'true';
+            pushUndoSnapshot();
+          }
+          scheduleRender();
+        });
+      }
+    });
+
+
+    document.addEventListener('click', event => {
+      const toggleCard = event.target.closest('[data-toggle-card]');
+      if (toggleCard) {
+        const key = toggleCard.dataset.toggleCard;
+        pushUndoSnapshot();
+        state.visible[key] = !state.visible[key];
+        render();
+        return;
+      }
+
+      const option = event.target.closest('[data-chip-option]');
+      if (option) {
+        const group = option.dataset.chipOption;
+        const value = option.dataset.chipValue;
+        if (state.chips[group].includes(value)) removeChip(group, value);
+        else addChip(group, value);
+        return;
+      }
+
+      const remove = event.target.closest('[data-remove-chip]');
+      if (remove) {
+        removeChip(remove.dataset.removeChip, remove.dataset.chipValue);
+        return;
+      }
+
+      const custom = event.target.closest('[data-add-custom]');
+      if (custom) {
+        const group = custom.dataset.addCustom;
+        const inputMap = { platforms: $('customPlatform'), tendency: $('customTendency'), activity: $('customActivity') };
+        addChip(group, inputMap[group].value);
+        inputMap[group].value = '';
+      }
+    });
+
+    ['customPlatform', 'customTendency', 'customActivity'].forEach(id => {
+      $(id).addEventListener('keydown', event => {
+        if (event.key !== 'Enter') return;
+        event.preventDefault();
+        const group = id === 'customPlatform' ? 'platforms' : id === 'customTendency' ? 'tendency' : 'activity';
+        addChip(group, event.target.value);
+        event.target.value = '';
+      });
+    });
+
+    $('addPair').addEventListener('click', () => {
+      pushUndoSnapshot();
+      state.pairs.push({ id: crypto.randomUUID(), name: '', met: '', memo: '', image: '', layout: 'basic' });
+      renderPairEditors();
+      render();
+    });
+
+    $('addStickerBtn').addEventListener('click', () => $('stickerFile').click());
+
+    $('stickerFile').addEventListener('change', async event => {
+      const file = event.target.files[0];
+      if (!file) return;
+      const src = await fileToDataUrl(file);
+      const imageSize = await getImageSize(src);
+      pushUndoSnapshot();
+      const sticker = {
+        id: crypto.randomUUID(),
+        src,
+        x: 60 + state.stickers.length * 28,
+        y: 70 + state.stickers.length * 28,
+        width: 160,
+        rotate: 0,
+        opacity: 100,
+        outlineVisible: true,
+        outlineColor: '#ffffff',
+        ratio: imageSize.height / imageSize.width,
+        layout: 'layout-rounded',
+        z: 4 + state.stickers.length
+      };
+      state.stickers.push(sticker);
+      state.selectedStickerId = sticker.id;
+      event.target.value = '';
+      render();
+      renderStickerEditors();
+    });
+
+    profileCard.addEventListener('click', event => {
+      if (!event.target.closest('.sticker')) {
+        state.selectedStickerId = null;
+        render();
+      }
+    });
+
+    function collectBackupData() {
+      return {
+        version: 1,
+        savedAt: new Date().toISOString(),
+        fields: {
+          eyebrowText: inputs.eyebrowText.value,
+          displayName: inputs.displayName.value,
+          intro: inputs.intro.value,
+          warnings: inputs.warnings.value,
+          bgColor: inputs.bgColor.value,
+          accentColor: inputs.accentColor.value,
+          textColor: inputs.textColor.value,
+          cardRadius: inputs.cardRadius.value,
+          pattern: inputs.pattern.value,
+          fontFamily: inputs.fontFamily.value
+        },
+        state: {
+          pairs: state.pairs,
+          stickers: state.stickers,
+          profileSrc: state.profileSrc,
+          hero: state.hero,
+          chips: state.chips,
+          visible: state.visible
+        }
+      };
+    }
+
+    function downloadTextFile(filename, text) {
+      const blob = new Blob([text], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.download = filename;
+      link.href = url;
+      link.click();
+      URL.revokeObjectURL(url);
+    }
+
+    function applyBackupData(data) {
+      if (!data || typeof data !== 'object') throw new Error('백업 파일 형식이 맞지 않습니다.');
+
+      const fields = data.fields || {};
+      Object.entries(fields).forEach(([key, value]) => {
+        if (inputs[key] && inputs[key].type !== 'file') inputs[key].value = value ?? '';
+      });
+
+      if (inputs.fontFamily.value.includes('Memoment')) {
+        inputs.fontFamily.value = "'Pretendard', 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif";
+      }
+
+      const savedState = data.state || {};
+      state.pairs = Array.isArray(savedState.pairs) && savedState.pairs.length
+        ? savedState.pairs.map(pair => ({
+            id: pair.id || crypto.randomUUID(),
+            name: pair.name || '',
+            met: pair.met || '',
+            memo: pair.memo || '',
+            image: pair.image || '',
+            layout: pair.layout || 'basic'
+          }))
+        : [{ id: crypto.randomUUID(), name: '페어명', met: '2025-11-28', memo: '', image: '', layout: 'basic' }];
+
+      state.stickers = Array.isArray(savedState.stickers)
+        ? savedState.stickers.map(sticker => ({
+            id: sticker.id || crypto.randomUUID(),
+            src: sticker.src || '',
+            x: Number(sticker.x ?? 60),
+            y: Number(sticker.y ?? 70),
+            width: Number(sticker.width ?? 160),
+            rotate: Number(sticker.rotate ?? 0),
+            opacity: Number(sticker.opacity ?? 100),
+            outlineVisible: sticker.outlineVisible ?? true,
+            outlineColor: sticker.outlineColor || '#ffffff',
+            ratio: Number(sticker.ratio ?? 1),
+            layout: sticker.layout || 'layout-rounded',
+            z: Number(sticker.z ?? 4)
+          })).filter(sticker => sticker.src)
+        : [];
+
+      state.selectedStickerId = null;
+      state.profileSrc = savedState.profileSrc || '';
+      state.hero = {
+        src: savedState.hero?.src || '',
+        x: Number(savedState.hero?.x ?? 0),
+        y: Number(savedState.hero?.y ?? 0),
+        scale: Number(savedState.hero?.scale ?? 100)
+      };
+      state.chips = {
+        platforms: Array.isArray(savedState.chips?.platforms) ? savedState.chips.platforms : [],
+        tendency: Array.isArray(savedState.chips?.tendency) ? savedState.chips.tendency : [],
+        activity: Array.isArray(savedState.chips?.activity) ? savedState.chips.activity : []
+      };
+      state.visible = {
+        basic: savedState.visible?.basic ?? true,
+        platforms: savedState.visible?.platforms ?? true,
+        tendency: savedState.visible?.tendency ?? true,
+        activity: savedState.visible?.activity ?? true,
+        info: savedState.visible?.info ?? true,
+        love: savedState.visible?.love ?? true
+      };
+
+      inputs.heroX.value = state.hero.x;
+      inputs.heroY.value = state.hero.y;
+      inputs.heroScale.value = state.hero.scale;
+      inputs.profilePhoto.value = '';
+      inputs.mainPhoto.value = '';
+
+      renderChipControls();
+      renderPairEditors();
+      render();
+    }
+
+    $('saveBackup').addEventListener('click', () => {
+      const backup = collectBackupData();
+      const date = new Date().toISOString().slice(0, 10);
+      downloadTextFile(`profile-card-backup-${date}.json`, JSON.stringify(backup, null, 2));
+    });
+
+    $('loadBackupBtn').addEventListener('click', () => $('loadBackupFile').click());
+
+    $('loadBackupFile').addEventListener('change', async event => {
+      const file = event.target.files[0];
+      if (!file) return;
+
+      try {
+        const text = await file.text();
+        pushUndoSnapshot();
+        applyBackupData(JSON.parse(text));
+      } catch (error) {
+        alert(error.message || '백업 파일을 불러오지 못했습니다.');
+      } finally {
+        event.target.value = '';
+      }
+    });
+
+    function preloadImage(src) {
+      if (!src) return Promise.resolve();
+      return new Promise(resolve => {
+        const img = new Image();
+        img.onload = resolve;
+        img.onerror = resolve;
+        img.src = src;
+      });
+    }
+
+    async function waitForCardImages() {
+      const images = Array.from(profileCard.querySelectorAll('img'));
+      const backgroundSources = [
+        state.profileSrc,
+        state.hero.src,
+        ...state.pairs.map(pair => pair.image),
+        ...state.stickers.map(sticker => sticker.src)
+      ].filter(Boolean);
+
+      await Promise.all([
+        ...images.map(img => {
+          if (img.complete && img.naturalWidth > 0) return Promise.resolve();
+          return new Promise(resolve => {
+            img.onload = resolve;
+            img.onerror = resolve;
+          });
+        }),
+        ...backgroundSources.map(preloadImage)
+      ]);
+
+      if ('decode' in HTMLImageElement.prototype) {
+        await Promise.all(images.map(img => img.decode().catch(() => {})));
+      }
+    }
+
+    $('saveImage').addEventListener('click', async () => {
+      const prevSelected = state.selectedStickerId;
+      state.selectedStickerId = null;
+      render();
+profileCard.classList.add('exporting');
+applyPatternBackground();
+await document.fonts.ready;
+await waitForCardImages();
+await new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve)));
+
+const canvas = await html2canvas(profileCard, {
+  backgroundColor: null,
+  scale: 2,
+  useCORS: true
+});
+
+profileCard.classList.remove('exporting');
+const link = document.createElement('a');
+      link.download = 'ppppppaann.png';
+      link.href = canvas.toDataURL('image/png');
+      link.click();
+      state.selectedStickerId = prevSelected;
+      render();
+    });
+
+    $('undoButton')?.addEventListener('click', undoLastChange);
+
+    document.addEventListener('keydown', event => {
+      const isUndo = (event.ctrlKey || event.metaKey) && event.key.toLowerCase() === 'z' && !event.shiftKey;
+      if (!isUndo) return;
+      event.preventDefault();
+      undoLastChange();
+    });
+
+    document.addEventListener('change', event => {
+      if (event.target.matches('input, textarea, select')) delete event.target.dataset.undoStarted;
+    });
+
+    document.addEventListener('blur', event => {
+      if (event.target.matches('input, textarea, select')) delete event.target.dataset.undoStarted;
+    }, true);
+
+    setupEditorToggle('loveEditorSection', 'toggleLoveEditors');
+    setupEditorToggle('stickerEditorSection', 'toggleStickerEditors');
+    makeHeroDraggable();
+    setupMobileSheet();
+    renderChipControls();
+    renderPairEditors();
+    render();
+    renderStickerEditors();
+    updateUndoButton();
+  </script>
+</body>
+</html>
